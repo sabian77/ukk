@@ -19,6 +19,11 @@ class GuruResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    // Tambahan untuk ganti label
+    protected static ?string $pluralLabel = 'Data Guru';
+    protected static ?string $label = 'Guru';
+    protected static ?string $navigationLabel = 'Guru';
+
     public static function form(Form $form): Form
     {
         return $form
