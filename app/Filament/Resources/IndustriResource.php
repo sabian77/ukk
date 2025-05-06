@@ -41,7 +41,7 @@ class IndustriResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('kontak')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(15),
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required()
@@ -67,8 +67,9 @@ class IndustriResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('guru_pembimbing')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('guru.nama')
+                    ->searchable()
+                    ->label('Guru Pembimbing')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

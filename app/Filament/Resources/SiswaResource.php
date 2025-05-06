@@ -36,7 +36,7 @@ class SiswaResource extends Resource
                 Forms\Components\TextInput::make('nis')
                     ->label('NIS')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(5),
                 Forms\Components\Select::make('gender')
                     ->label('Jenis Kelamin')
                     ->options([

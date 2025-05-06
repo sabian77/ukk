@@ -35,7 +35,7 @@ class GuruResource extends Resource
                 Forms\Components\TextInput::make('nip')
                     ->label('NIP')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(18),
                 Forms\Components\Select::make('gender')
                     ->label('Jenis Kelamin')
                     ->options([
@@ -48,7 +48,7 @@ class GuruResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('kontak')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(15),
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required()
