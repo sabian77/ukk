@@ -53,6 +53,13 @@ class GuruResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
+
+                //menambah roles
+                Forms\Components\Select::make('roles')  
+                    ->relationship('roles', 'name')
+                    ->preload()
+                 ->searchable(),
+                             
             ]);
     }
 
@@ -71,6 +78,12 @@ class GuruResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
+
+                Tables\Columns\TextColumn::make('roles')
+                    ->label('Role')
+                    ->formatStateUsing(function ($state, $record) {
+                        return $record->getRoleNames()->join(', ');
+                    }),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

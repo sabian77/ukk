@@ -46,10 +46,10 @@ class IndustriResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Select::make('guru_pembimbing')
-                    ->label('Guru Pembimbing')
-                    ->relationship('guru', 'nama')//tampil nama guru
-                    ->required(),
+                // Forms\Components\Select::make('guru_pembimbing')
+                //     ->label('Guru Pembimbing')
+                //     ->relationship('guru', 'nama')//tampil nama guru
+                //     ->required(),
             ]);
     }
 
@@ -67,10 +67,10 @@ class IndustriResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('guru.nama')
-                    ->searchable()
-                    ->label('Guru Pembimbing')
-                    ->sortable(),
+                // Tables\Columns\TextColumn::make('guru.nama')
+                //     ->searchable()
+                //     ->label('Guru Pembimbing')
+                //     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

@@ -12,6 +12,8 @@ use Illuminate\Support\Str;
 class User extends Authenticatable
 {
     use HasRoles;
+
+    
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -59,4 +61,6 @@ class User extends Authenticatable
             ->map(fn (string $name) => Str::of($name)->substr(0, 1))
             ->implode('');
     }
+
+
 }

@@ -54,6 +54,13 @@ class SiswaResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
+
+                //menambah roles
+                Forms\Components\Select::make('roles')  
+                    ->relationship('roles', 'name')
+                    ->preload()
+                    ->searchable(),
+                 
                 // Forms\Components\Toggle::make('status_pkl')
                 //     ->required(),
             ]);
@@ -76,6 +83,11 @@ class SiswaResource extends Resource
                     ->searchable(),
                 Tables\Columns\IconColumn::make('status_pkl')
                     ->boolean(),
+                Tables\Columns\TextColumn::make('roles')
+                    ->label('Role')
+                    ->formatStateUsing(function ($state, $record) {
+                        return $record->getRoleNames()->join(', ');
+                    }),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
