@@ -30,15 +30,18 @@ class PklResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('siswa_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('industri_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('guru_id')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('siswa_id')
+                    ->label('Nama Siswa')
+                    ->relationship('siswa', 'nama')
+                    ->required(),
+                Forms\Components\Select::make('industri_id')
+                    ->label('Industri')
+                    ->relationship('industri', 'nama')
+                    ->required(),
+                Forms\Components\Select::make('guru_id')
+                    ->label('Guru Pembimbing')
+                    ->relationship('guru', 'nama')
+                    ->required(),
                 Forms\Components\DatePicker::make('mulai')
                     ->required(),
                 Forms\Components\DatePicker::make('selesai')

@@ -49,7 +49,7 @@ class SiswaResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('kontak')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(15),
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required()
