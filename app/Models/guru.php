@@ -12,4 +12,9 @@ class guru extends Model
     {
         return $this->hasMany(pkl::class);
     }
+
+    public function industri()
+    {
+        return $this->hasMany(industri::class);
+    }
 }

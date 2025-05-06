@@ -12,4 +12,9 @@ class industri extends Model
     {
         return $this->hasMany(pkl::class);
     }
+
+    public function guru ()
+    {
+        return $this->belongsTo(guru::class, 'guru_pembimbing');
+    }
 }

@@ -46,9 +46,10 @@ class IndustriResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('guru_pembimbing')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('guru_pembimbing')
+                    ->label('Guru Pembimbing')
+                    ->relationship('guru', 'nama')//tampil nama guru
+                    ->required(),
             ]);
     }
 

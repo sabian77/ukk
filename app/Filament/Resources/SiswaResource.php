@@ -34,9 +34,15 @@ class SiswaResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('nis')
+                    ->label('NIS')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('gender')
+                Forms\Components\Select::make('gender')
+                    ->label('Jenis Kelamin')
+                    ->options([
+                        'Laki-laki' => 'Laki-laki', 
+                        'Perempuan' => 'Perempuan'
+                    ])
                     ->required(),
                 Forms\Components\TextInput::make('alamat')
                     ->required()
@@ -48,8 +54,8 @@ class SiswaResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Toggle::make('status_pkl')
-                    ->required(),
+                // Forms\Components\Toggle::make('status_pkl')
+                //     ->required(),
             ]);
     }
 
