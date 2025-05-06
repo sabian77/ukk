@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class guru extends Model
 {
     protected $fillable = ['nama', 'nip', 'gender', 'alamat', 'kontak', 'email'];
+
+    public function pkl()
+    {
+        return $this->hasMany(pkl::class);
+    }
 }

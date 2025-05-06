@@ -7,4 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 class pkl extends Model
 {
     protected $fillable = ['siswa_id', 'industri_id', 'guru_id', 'mulai', 'selesai'];
+
+    public function siswa ()
+    {
+        return $this->belongsTo(siswa::class);
+    }
+
+    public function industri ()
+    {
+        return $this->belongsTo(industri::class);
+    }
+
+    public function guru ()
+    {
+        return $this->belongsTo(guru::class);
+    }
 }
+
+
