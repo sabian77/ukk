@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\GuruResource\Pages;
-use App\Filament\Resources\GuruResource\RelationManagers;
-use App\Models\Guru;
+use App\Filament\Resources\SiswaResource\Pages;
+use App\Filament\Resources\SiswaResource\RelationManagers;
+use App\Models\Siswa;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,18 +13,19 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class GuruResource extends Resource
+class SiswaResource extends Resource
 {
-    protected static ?string $model = Guru::class;
+    protected static ?string $model = Siswa::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-        // Tambahan untuk ganti label
-    protected static ?string $pluralLabel = 'Daftar Guru pembimbing';
-    protected static ?string $label = 'Guru';
-    protected static ?string $navigationLabel = 'Guru';
+     // Tambahan untuk ganti label
+    protected static ?string $pluralLabel = 'Daftar siswa pkl';
+    protected static ?string $label = 'Siswa';
+    protected static ?string $navigationLabel = 'Siswa';
 
-    protected static ?string $slug = 'guru';
+    protected static ?string $slug = 'siswa';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -32,7 +33,7 @@ class GuruResource extends Resource
                 Forms\Components\TextInput::make('nama')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('nip')
+                Forms\Components\TextInput::make('nis')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('gender')
@@ -47,6 +48,8 @@ class GuruResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Toggle::make('status_pkl')
+                    ->required(),
             ]);
     }
 
@@ -56,7 +59,7 @@ class GuruResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('nama')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('nip')
+                Tables\Columns\TextColumn::make('nis')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('gender'),
                 Tables\Columns\TextColumn::make('alamat')
@@ -65,6 +68,8 @@ class GuruResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
+                Tables\Columns\IconColumn::make('status_pkl')
+                    ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -91,7 +96,7 @@ class GuruResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageGurus::route('/'),
+            'index' => Pages\ManageSiswas::route('/'),
         ];
     }
 }

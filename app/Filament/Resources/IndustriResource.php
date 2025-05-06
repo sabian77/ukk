@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\GuruResource\Pages;
-use App\Filament\Resources\GuruResource\RelationManagers;
-use App\Models\Guru;
+use App\Filament\Resources\IndustriResource\Pages;
+use App\Filament\Resources\IndustriResource\RelationManagers;
+use App\Models\Industri;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,18 +13,19 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class GuruResource extends Resource
+class IndustriResource extends Resource
 {
-    protected static ?string $model = Guru::class;
+    protected static ?string $model = Industri::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-        // Tambahan untuk ganti label
-    protected static ?string $pluralLabel = 'Daftar Guru pembimbing';
-    protected static ?string $label = 'Guru';
-    protected static ?string $navigationLabel = 'Guru';
+    // Tambahan untuk ganti label
+    protected static ?string $pluralLabel = 'Daftar industri';
+    protected static ?string $label = 'Industri';
+    protected static ?string $navigationLabel = 'Industri';
 
-    protected static ?string $slug = 'guru';
+    protected static ?string $slug = 'industri';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -32,11 +33,9 @@ class GuruResource extends Resource
                 Forms\Components\TextInput::make('nama')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('nip')
+                Forms\Components\TextInput::make('bidang_usaha')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('gender')
-                    ->required(),
                 Forms\Components\TextInput::make('alamat')
                     ->required()
                     ->maxLength(255),
@@ -47,6 +46,9 @@ class GuruResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('guru_pembimbing')
+                    ->required()
+                    ->numeric(),
             ]);
     }
 
@@ -56,15 +58,17 @@ class GuruResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('nama')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('nip')
+                Tables\Columns\TextColumn::make('bidang_usaha')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('gender'),
                 Tables\Columns\TextColumn::make('alamat')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('kontak')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('guru_pembimbing')
+                    ->numeric()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -91,7 +95,7 @@ class GuruResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageGurus::route('/'),
+            'index' => Pages\ManageIndustris::route('/'),
         ];
     }
 }
